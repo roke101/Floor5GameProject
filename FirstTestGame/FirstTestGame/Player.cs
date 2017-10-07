@@ -6,7 +6,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FirstTestGame
+namespace TestPlayer
 {
     /// <summary>
     /// Basic test class used as an example of what a 
@@ -17,22 +17,22 @@ namespace FirstTestGame
         /// <summary>
         /// Stores player texture.
         /// </summary>
-        public Texture2D PlayerTexture;
+        public Texture2D _playerTexture;
 
         /// <summary>
         /// Stores player position.
         /// </summary>
-        public Vector2 Position;
+        public Vector2 _position;
 
         /// <summary>
         /// Stores whether the player is active or not.
         /// </summary>
-        public bool Active;
+        public bool _active;
 
         /// <summary>
         /// Stores the players health value.
         /// </summary>
-        public int Health;
+        public int _health;
 
         /// <summary>
         /// gets the players width.
@@ -41,7 +41,7 @@ namespace FirstTestGame
         {
             get
             {
-                return PlayerTexture.Width;
+                return _playerTexture.Width;
             }
         }
 
@@ -52,7 +52,7 @@ namespace FirstTestGame
         {
             get
             {
-                return PlayerTexture.Height;
+                return _playerTexture.Height;
             }
         }
 
@@ -63,23 +63,29 @@ namespace FirstTestGame
         /// <param name="position">The starting position of the character.</param>
         public void Initialize(Texture2D texture, Vector2 position)
         {
-            PlayerTexture = texture;
+            _playerTexture = texture;
 
-            Position = position;
+            _position = position;
 
-            Active = true;
+            _active = true;
 
-            Health = 100;
+            _health = 100;
         }
 
+        /// <summary>
+        /// Method that updates the sprite.
+        /// </summary>
         public void Update()
         {
             
         }
-
+         /// <summary>
+         /// Draws (Adds until further knowledge) the information in the player class to a sprite batch.
+         /// </summary>
+         /// <param name="spriteBatch">The spriteBatch being added to.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_playerTexture, _position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }
