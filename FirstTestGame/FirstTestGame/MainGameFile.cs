@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TestPlayer;
 
 namespace FirstTestGame
 {
@@ -11,6 +12,11 @@ namespace FirstTestGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        
+        /// <summary>
+        /// used to represent the first player character
+        /// </summary>
+        Player testPlayer;
 
         public MainGameFile()
         {
@@ -28,6 +34,8 @@ namespace FirstTestGame
         {
             // TODO: Add your initialization logic here
 
+            testPlayer = new Player();
+
             base.Initialize();
         }
 
@@ -41,6 +49,9 @@ namespace FirstTestGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            testPlayer.Initialize(Content.Load<Texture2D>("Graphics\\player"), playerPosition);
         }
 
         /// <summary>
@@ -76,6 +87,14 @@ namespace FirstTestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            //Being the drawing/rendering.
+            spriteBatch.Begin();
+
+            testPlayer.Draw(spriteBatch);
+
+            //Ends the drawing/rendering.
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
